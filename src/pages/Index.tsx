@@ -10,11 +10,13 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import { Document, Packer, Paragraph, TextRun, AlignmentType } from "docx";
+import { saveAs } from "file-saver";
 
 const ThaiMemoForm = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
   const initialData = {
     department: "",
     referenceNumber: "",
@@ -48,20 +50,259 @@ const ThaiMemoForm = () => {
       }));
     }
   };
+  const generatePdf = () => {
+    const memoContent = document.getElementById("memo-content");
+    const actionButtons = document.getElementById("action-buttons");
+    if (!memoContent) return;
+
+    toast({
+      title: "กำลังสร้างไฟล์ PDF...",
+      description: "กรุณารอสักครู่"
+    });
+
+    if (actionButtons) {
+      actionButtons.style.display = "none";
+    }
+
+    html2canvas(memoContent, {
+      scale: 3,
+      useCORS: true
+    }).then(canvas => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "cm",
+        format: "a4"
+      });
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("บันทึกข้อความ.pdf");
+
+      if (actionButtons) {
+        actionButtons.style.display = "flex";
+      }
+    }).catch(err => {
+      console.error("Error generating PDF:", err);
+      toast({
+        variant: "destructive",
+        title: "เกิดข้อผิดพลาด",
+        description: "ไม่สามารถสร้างไฟล์ PDF ได้"
+      });
+      if (actionButtons) {
+        actionButtons.style.display = "flex";
+      }
+    });
+  };
+
+  const generateWord = () => {
+    toast({
+      title: "กำลังสร้างไฟล์ Word...",
+      description: "กรุณารอสักครู่"
+    });
+
+    const formatThaiDate = (date: Date | undefined) => {
+      if (!date) return "";
+      return format(date, "d MMMM yyyy", {
+        locale: th
+      });
+    };
+
+    const doc = new Document({
+      creator: "Lovable Thai Memo App",
+      styles: {
+        default: {
+          document: {
+            run: {
+              font: "TH Sarabun New", // Requires user to have this font installed
+              size: 32, // 16pt
+            },
+          },
+        },
+      },
+      sections: [{
+        properties: {
+          page: {
+            margin: {
+              top: "1.5cm",
+              right: "2cm",
+              bottom: "2.5cm",
+              left: "3cm"
+            },
+          },
+        },
+        children: [
+          new Paragraph({
+            children: [new TextRun({
+              text: "บันทึกข้อความ",
+              bold: true,
+              size: 50
+            })],
+            alignment: AlignmentType.CENTER,
+            spacing: {
+              after: 400
+            },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "ส่วนราชการ",
+                bold: true,
+                size: 34
+              }),
+              new TextRun({
+                text: `\t${formData.department}`,
+                size: 40
+              }),
+            ],
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "ที่",
+                bold: true,
+                size: 34
+              }),
+              new TextRun({
+                text: `\t${formData.referenceNumber}`,
+                size: 40
+              }),
+              new TextRun({
+                text: `\t\t\tวันที่`,
+                bold: true,
+                size: 34
+              }),
+              new TextRun({
+                text: `\t${formatThaiDate(formData.date)}`,
+                size: 40
+              }),
+            ],
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "เรื่อง",
+                bold: true,
+                size: 34
+              }),
+              new TextRun({
+                text: `\t${formData.subject}`,
+                size: 40
+              }),
+            ],
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "เรียน",
+                bold: true,
+                size: 34
+              }),
+              new TextRun({
+                text: `\t${formData.salutation}`,
+                size: 40
+              }),
+            ],
+            spacing: {
+              after: 200
+            },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "อ้างถึง",
+                size: 34
+              }),
+              new TextRun({
+                text: `\t${formData.referenceTo}`,
+                size: 40
+              }),
+            ],
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "สิ่งที่ส่งมาด้วย",
+                size: 34
+              }),
+              new TextRun({
+                text: `\t${formData.attachments}`,
+                size: 40
+              }),
+            ],
+            spacing: {
+              after: 400
+            },
+          }),
+          ...[formData.reason, formData.objective, formData.conclusion].flatMap(text =>
+            text.split('\n').map(line => new Paragraph({
+              children: [new TextRun({
+                text: line || " ",
+                size: 40
+              })],
+              indent: {
+                firstLine: "2.5cm"
+              },
+            }))
+          ),
+          new Paragraph({
+            text: "",
+            spacing: {
+              after: 600
+            }
+          }), // Spacer
+          new Paragraph({
+            children: [new TextRun({
+              text: `( ${formData.signerName} )`,
+              size: 40
+            })],
+            alignment: AlignmentType.CENTER,
+            indent: {
+              left: "50%"
+            },
+          }),
+          new Paragraph({
+            children: [new TextRun({
+              text: `${formData.signerPosition}`,
+              size: 40
+            })],
+            alignment: AlignmentType.CENTER,
+            indent: {
+              left: "50%"
+            },
+          }),
+        ],
+      }, ],
+    });
+
+    Packer.toBlob(doc).then(blob => {
+      saveAs(blob, "บันทึกข้อความ.docx");
+    }).catch(err => {
+      console.error("Error generating Word:", err);
+      toast({
+        variant: "destructive",
+        title: "เกิดข้อผิดพลาด",
+        description: "ไม่สามารถสร้างไฟล์ Word ได้"
+      });
+    });
+  };
+
   const handleGeneratePdf = () => {
-    console.log("Generating PDF with data:", JSON.stringify(formData, null, 2));
-    toast({
-      title: "เตรียมสร้าง PDF",
-      description: "ข้อมูลถูกรวบรวมในคอนโซล และพร้อมส่งไปยังระบบหลังบ้านเพื่อสร้างเป็นไฟล์ PDF"
-    });
+    generatePdf();
   };
+
   const handleSaveData = () => {
-    console.log("Saving data:", JSON.stringify(formData, null, 2));
+    generateWord();
     toast({
-      title: "บันทึกข้อมูลสำเร็จ",
-      description: "ข้อมูลถูกบันทึกเรียบร้อยแล้ว (จำลอง)"
+      title: "ไฟล์ Word กำลังถูกสร้าง",
+      description: "ไฟล์ PDF จะถูกสร้างตามมาในอีกสักครู่"
     });
+    setTimeout(() => {
+      generatePdf();
+    }, 2000);
   };
+
   const handleClearForm = () => {
     setFormData(initialData);
     toast({
@@ -72,7 +313,7 @@ const ThaiMemoForm = () => {
   const inputStyle = "text-[20pt] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent";
   const placeholderStyle = "placeholder:italic placeholder:text-gray-400/80";
   return <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-8 pt-[1.5cm] flex justify-center items-start font-sarabun">
-      <div className="w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white">
+      <div id="memo-content" className="w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white">
         <header className="relative mb-4">
           <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute -top-[0cm] -left-[0cm] h-[1.5cm] w-auto" />
           <h1 className="text-[25pt] font-bold text-center pt-[0.5cm]">บันทึกข้อความ</h1>
@@ -150,7 +391,7 @@ const ThaiMemoForm = () => {
           </div>
         </main>
       </div>
-      <div className="fixed bottom-4 right-4 flex flex-col gap-3">
+      <div id="action-buttons" className="fixed bottom-4 right-4 flex flex-col gap-3">
           <Button onClick={handleGeneratePdf} className="bg-blue-600 hover:bg-blue-700">สร้าง PDF</Button>
           <Button onClick={handleSaveData} className="bg-green-600 hover:bg-green-700">บันทึกข้อมูล</Button>
           <Button onClick={handleClearForm} variant="destructive">ล้างข้อมูล</Button>

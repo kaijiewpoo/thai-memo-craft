@@ -68,17 +68,17 @@ const ThaiMemoForm = () => {
       description: "ข้อมูลในฟอร์มทั้งหมดถูกล้างแล้ว"
     });
   };
-  const inputStyle = "text-[16pt] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent";
+  const inputStyle = "text-[17pt] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent";
   const placeholderStyle = "placeholder:italic placeholder:text-gray-400/80";
-  return <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-4 sm:p-8 flex justify-center items-start font-sarabun">
-      <div className="w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[2.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white">
-        <header className="relative mb-[1cm]">
-          <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute absolute left left-10 -left-10 w-auto " />
+  return <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-8 pt-[1.5cm] flex justify-center items-start font-sarabun">
+      <div className="w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white">
+        <header className="relative mb-4">
+          <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute -top-[0.5cm] -left-[1.2cm] h-[1.5cm] w-auto" />
           <h1 className="text-[25pt] font-bold text-center pt-[0.5cm]">บันทึกข้อความ</h1>
         </header>
 
         <main className="text-[16pt]">
-          <div className="space-y-2">
+          <div className="space-y-1">
             <div className="flex items-baseline">
               <Label htmlFor="department" className="shrink-0 text-[17pt] font-bold">ส่วนราชการ</Label>
               <Input id="department" name="department" value={formData.department} onChange={handleInputChange} className={inputStyle} />
@@ -94,7 +94,7 @@ const ThaiMemoForm = () => {
                 <div className="flex-1 ml-2">
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button variant={"ghost"} className={cn("w-full justify-start text-left font-normal text-[16pt] p-0 h-auto border-b border-dotted border-black rounded-none hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0", !formData.date && "text-muted-foreground")}>
+                      <Button variant={"ghost"} className={cn("w-full justify-start text-left font-normal text-[17pt] p-0 h-auto border-b border-dotted border-black rounded-none hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0", !formData.date && "text-muted-foreground")}>
                         {formData.date ? format(formData.date, "d MMMM yyyy", {
                         locale: th
                       }) : <span className={cn("italic text-gray-400/80", placeholderStyle)}>วัน เดือน ปี</span>}
@@ -130,19 +130,19 @@ const ThaiMemoForm = () => {
           </div>
           
           <div className="mt-4 space-y-2">
-             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} className="w-full text-[16pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]" rows={5} />
-            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} className="w-full text-[16pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]" rows={5} />
-            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} className="w-full text-[16pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]" rows={5} />
+             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} className="w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]" rows={5} />
+            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} className="w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]" rows={5} />
+            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} className="w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]" rows={5} />
           </div>
 
           <div className="flex justify-end mt-8">
             <div className="w-2/5 text-center space-y-2">
                <p className="h-[2em]">(ลงชื่อ).....................................................</p>
               <div>
-                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[16pt] border-none shadow-none focus:ring-0 p-0" placeholder="(........พิมพ์ชื่อเต็ม........)" />
+                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[17pt] border-none shadow-none focus:ring-0 p-0" placeholder="(........พิมพ์ชื่อเต็ม........)" />
               </div>
               <div>
-                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[16pt] border-none shadow-none focus:ring-0 p-0" placeholder="ตำแหน่ง" />
+                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[17pt] border-none shadow-none focus:ring-0 p-0" placeholder="ตำแหน่ง" />
               </div>
             </div>
           </div>

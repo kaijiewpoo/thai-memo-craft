@@ -68,9 +68,12 @@ const ThaiMemoForm = () => {
       description: "ข้อมูลในฟอร์มทั้งหมดถูกล้างแล้ว"
     });
   };
-  const inputStyle = "text-[23px] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent";
+  const inputStyle =
+    "text-[23px] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent focus:bg-transparent bg-transparent";
   const placeholderStyle = "placeholder:italic placeholder:text-gray-400/80";
-  return <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-8 pt-[1.5cm] flex justify-center items-start font-sarabun">
+
+  return (
+    <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-8 pt-[1.5cm] flex justify-center items-start font-sarabun">
       <div className="w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white">
         <header className="relative mb-4">
           <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute -top-[0cm] -left-[0cm] h-[1.5cm] w-auto" />
@@ -81,23 +84,35 @@ const ThaiMemoForm = () => {
           <div className="space-y-1">
             <div className="flex items-baseline">
               <Label htmlFor="department" className="shrink-0 text-[17pt] font-bold">ส่วนราชการ</Label>
-              <Input id="department" name="department" value={formData.department} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
+              <Input id="department" name="department" value={formData.department} onChange={handleInputChange}
+                className={cn(inputStyle, placeholderStyle)}
+                placeholder="กรอกข้อมูล"
+              />
             </div>
 
             <div className="flex items-baseline gap-8">
               <div className="flex items-baseline w-1/2">
                 <Label htmlFor="referenceNumber" className="shrink-0 text-[17pt] font-bold">ที่</Label>
-                <Input id="referenceNumber" name="referenceNumber" value={formData.referenceNumber} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
+                <Input id="referenceNumber" name="referenceNumber" value={formData.referenceNumber} onChange={handleInputChange}
+                  className={cn(inputStyle, placeholderStyle)}
+                  placeholder="กรอกข้อมูล"
+                />
               </div>
               <div className="flex items-baseline w-1/2">
                 <Label htmlFor="date" className="shrink-0 text-[17pt] font-bold">วันที่</Label>
                 <div className="flex-1 ml-2">
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button variant={"ghost"} className={cn("w-full justify-start text-left font-normal text-[23px] p-0 h-auto border-b border-dotted border-black rounded-none hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0", !formData.date && "text-muted-foreground")}>
-                        {formData.date ? format(formData.date, "d MMMM yyyy", {
-                        locale: th
-                      }) : <span className={cn("italic text-gray-400/80", placeholderStyle)}>วัน เดือน ปี</span>}
+                      <Button
+                        variant={"ghost"}
+                        className={cn(
+                          "w-full justify-start text-left font-normal text-[23px] p-0 h-auto border-b border-dotted border-black rounded-none hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 bg-transparent",
+                          !formData.date && "text-muted-foreground"
+                        )}
+                      >
+                        {formData.date ? format(formData.date, "d MMMM yyyy", { locale: th }) : (
+                          <span className={cn("italic text-gray-400/80", placeholderStyle)}>วัน เดือน ปี</span>
+                        )}
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0">
@@ -110,50 +125,81 @@ const ThaiMemoForm = () => {
 
             <div className="flex items-baseline">
               <Label htmlFor="subject" className="shrink-0 text-[17pt] font-bold">เรื่อง</Label>
-              <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
+              <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange}
+                className={cn(inputStyle, placeholderStyle)}
+                placeholder="กรอกข้อมูล"
+              />
             </div>
 
             <div className="flex items-baseline">
               <Label htmlFor="salutation" className="shrink-0 text-[17pt] font-bold">เรียน</Label>
-              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
+              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange}
+                className={cn(inputStyle, placeholderStyle)}
+                placeholder="กรอกข้อมูล"
+              />
             </div>
 
             <div className="flex items-baseline">
               <Label htmlFor="referenceTo" className="shrink-0 text-[17pt]">อ้างถึง</Label>
-              <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
+              <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange}
+                className={cn(inputStyle, placeholderStyle)}
+                placeholder="กรอกข้อมูล"
+              />
             </div>
 
             <div className="flex items-baseline">
               <Label htmlFor="attachments" className="shrink-0 text-[17pt]">สิ่งที่ส่งมาด้วย</Label>
-              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} placeholder="จงเติมข้อมูล" className="" />
+              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange}
+                className={cn(inputStyle, placeholderStyle)}
+                placeholder="กรอกข้อมูล"
+              />
             </div>
           </div>
           
           <div className="mt-4 space-y-2">
-             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
-            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
-            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
+             <Textarea name="reason" value={formData.reason} onChange={handleInputChange}
+              placeholder="กรอกข้อมูล..."
+              className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)}
+              rows={7}
+            />
+            <Textarea name="objective" value={formData.objective} onChange={handleInputChange}
+              placeholder="กรอกข้อมูล..."
+              className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)}
+              rows={7}
+            />
+            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange}
+              placeholder="กรอกข้อมูล..."
+              className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)}
+              rows={7}
+            />
           </div>
 
           <div className="flex justify-end mt-8">
             <div className="w-2/5 text-center space-y-2">
               <div className="flex justify-center items-baseline">
                 <span className="text-[17pt]">(</span>
-                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0" placeholder="จงเติมข้อมูล" />
+                <Input name="signerName" value={formData.signerName} onChange={handleInputChange}
+                  className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent"
+                  placeholder="กรอกข้อมูล"
+                />
                 <span className="text-[17pt]">)</span>
               </div>
               <div>
-                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0" placeholder="จงเติมข้อมูล" />
+                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange}
+                   className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent"
+                   placeholder="กรอกข้อมูล"
+                 />
               </div>
             </div>
           </div>
         </main>
       </div>
       <div className="fixed bottom-4 right-4 flex flex-col gap-3">
-          <Button onClick={handleGeneratePdf} className="bg-blue-600 hover:bg-blue-700">สร้าง PDF</Button>
-          <Button onClick={handleSaveData} className="bg-green-600 hover:bg-green-700">บันทึกข้อมูล</Button>
-          <Button onClick={handleClearForm} variant="destructive">ล้างข้อมูล</Button>
+        <Button onClick={handleGeneratePdf} className="bg-blue-600 hover:bg-blue-700">สร้าง PDF</Button>
+        <Button onClick={handleSaveData} className="bg-green-600 hover:bg-green-700">บันทึกข้อมูล</Button>
+        <Button onClick={handleClearForm} variant="destructive">ล้างข้อมูล</Button>
       </div>
-    </div>;
+    </div>
+  );
 };
 export default ThaiMemoForm;

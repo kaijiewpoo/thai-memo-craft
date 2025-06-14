@@ -86,13 +86,13 @@ const ThaiMemoForm = () => {
         <main className="text-[16pt]">
           <div className="space-y-3">
             <div className="flex items-baseline">
-              <Label htmlFor="department" className="shrink-0">ส่วนราชการ</Label>
+              <Label htmlFor="department" className="shrink-0 text-[17pt] font-bold">ส่วนราชการ</Label>
               <Input id="department" name="department" value={formData.department} onChange={handleInputChange} className={inputStyle} />
             </div>
 
             <div className="flex items-baseline gap-8">
               <div className="flex items-baseline w-1/2">
-                <Label htmlFor="referenceNumber" className="shrink-0">ที่</Label>
+                <Label htmlFor="referenceNumber" className="shrink-0 text-[17pt] font-bold">ที่</Label>
                 <Input id="referenceNumber" name="referenceNumber" value={formData.referenceNumber} onChange={handleInputChange} className={inputStyle} />
               </div>
               <div className="flex items-baseline w-1/2">
@@ -125,22 +125,22 @@ const ThaiMemoForm = () => {
             </div>
 
             <div className="flex items-baseline">
-              <Label htmlFor="subject" className="shrink-0">เรื่อง</Label>
+              <Label htmlFor="subject" className="shrink-0 text-[17pt] font-bold">เรื่อง</Label>
               <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange} className={inputStyle}/>
             </div>
 
             <div className="flex items-baseline">
-              <Label htmlFor="salutation" className="shrink-0">เรียน</Label>
+              <Label htmlFor="salutation" className="shrink-0 text-[17pt] font-bold">เรียน</Label>
               <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={inputStyle}/>
             </div>
 
             <div className="flex items-baseline">
-              <Label htmlFor="referenceTo" className="shrink-0">อ้างถึง</Label>
+              <Label htmlFor="referenceTo" className="shrink-0 text-[17pt] font-bold">อ้างถึง</Label>
               <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange} className={inputStyle} placeholder="..."/>
             </div>
 
             <div className="flex items-baseline">
-              <Label htmlFor="attachments" className="shrink-0">สิ่งที่ส่งมาด้วย</Label>
+              <Label htmlFor="attachments" className="shrink-0 text-[17pt] font-bold">สิ่งที่ส่งมาด้วย</Label>
               <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} className={inputStyle} placeholder="..."/>
             </div>
           </div>

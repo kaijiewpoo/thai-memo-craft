@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -41,10 +42,13 @@
   color: #888;
 }
 
+/* ปรับสำหรับการพิมพ์ */
 @media print {
-  /* ซ่อนแถบปุ่ม, กำหนดให้แสดงเฉพาะตัวเอกสาร */
   .print\:hidden {
     display: none !important;
+  }
+  .print\:flex {
+    display: flex !important;
   }
   body {
     background: white !important;
@@ -53,5 +57,22 @@
     padding: 0 !important;
     text-align: left !important;
     background: white !important;
+  }
+  /* บังคับให้ A4 */
+  .a4-print-border {
+    width: 210mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    box-sizing: border-box !important;
+    border: 2px solid #000 !important;
+    margin: 0 auto !important;
+    background: white !important;
+    position: relative !important;
+    page-break-after: avoid !important;
+    overflow: hidden !important;
+  }
+  @page {
+    size: A4;
+    margin: 0;
   }
 }

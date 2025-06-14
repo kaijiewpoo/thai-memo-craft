@@ -76,14 +76,23 @@ const ThaiMemoForm = () => {
   const placeholderStyle = "placeholder:italic placeholder:text-gray-400/80";
 
   return (
-    <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-8 pt-[1.5cm] flex justify-center items-start font-sarabun">
-      <div className="w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white">
+    <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-8 pt-[1.5cm] flex justify-center items-start font-sarabun relative print:bg-white">
+      {/* A4 PAPER FRAME */}
+      <div
+        className="relative a4-print-border w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white print:shadow-none print:pt-[1.5cm] print:pr-[2cm] print:pb-[2.5cm] print:pl-[3cm] print:text-black print:dark:text-black print:mx-0 print:my-0"
+        style={{
+          boxSizing: "border-box",
+        }}
+      >
+        {/* เอกสารเนื้อหาทั้งหมด */}
         <header className="relative mb-4">
           <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute -top-[0cm] -left-[0cm] h-[1.5cm] w-auto" />
           <h1 className="text-[25pt] font-bold text-center pt-[0.5cm]">บันทึกข้อความ</h1>
         </header>
 
+        {/* ... keep existing code (main document UI) the same ... */}
         <main className="text-[16pt]">
+          {/* ... keep existing code (form and inputs) the same ... */}
           <div className="space-y-1">
             <div className="flex items-baseline">
               <Label htmlFor="department" className="shrink-0 text-[17pt] font-bold">ส่วนราชการ</Label>
@@ -196,7 +205,20 @@ const ThaiMemoForm = () => {
             </div>
           </div>
         </main>
+
+        {/* LOGO + APP NAME (VISIBLE ONLY ON PRINT AT BOTTOM LEFT) */}
+        <div className="hidden print:flex items-center gap-2 absolute left-4 bottom-4">
+          <img
+            src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png"
+            alt="Lovable Logo"
+            style={{ width: "2cm", height: "auto" }}
+            className="print:opacity-90"
+          />
+          <span className="text-[13pt] font-bold text-zinc-700 print:text-black">สร้างด้วย Lovable</span>
+        </div>
       </div>
+
+      {/* ปุ่มเมนู UI (ไม่แสดงตอนพิมพ์) */}
       <div className="fixed bottom-4 right-4 flex flex-col gap-3 print:hidden">
         <Button onClick={handleClearForm} variant="destructive">ล้างข้อมูล</Button>
         <Button onClick={handlePrint} className="bg-zinc-600 hover:bg-zinc-700">พิมพ์</Button>

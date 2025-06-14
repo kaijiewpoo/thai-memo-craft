@@ -1,9 +1,7 @@
-
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
 import { th } from "date-fns/locale";
-import { Calendar as CalendarIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -71,63 +69,76 @@ const ThaiMemoForm = () => {
     });
   };
 
+  const inputStyle = "text-[16pt] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent";
+  const placeholderStyle = "placeholder:italic placeholder:text-gray-400/80";
+
   return (
     <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-4 sm:p-8 flex justify-center items-start font-sarabun">
       <div className="w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[2.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white">
-        <header className="flex flex-col items-center">
-          <img src="/garuda.svg" alt="ตราครุฑ" className="h-[3cm] w-auto" />
-          <h1 className="text-[25pt] font-bold mt-[1.0cm]">บันทึกข้อความ</h1>
+        <header className="relative mb-[1cm]">
+          <img src="/lovable-uploads/a7376d61-ae85-4524-b797-f9545b53dad5.png" alt="ตราครุฑ" className="absolute left-0 top-[-1.5cm] h-[3cm] w-auto" />
+          <h1 className="text-[25pt] font-bold text-center pt-[0.5cm]">บันทึกข้อความ</h1>
         </header>
 
-        <main className="mt-[1.0cm] text-[16pt]">
+        <main className="text-[16pt]">
           <div className="space-y-3">
-            <div className="flex items-baseline gap-4">
-              <Label htmlFor="department" className="w-[120px]">ส่วนราชการ</Label>
-              <Input id="department" name="department" value={formData.department} onChange={handleInputChange} placeholder="ระบุหน่วยงาน" className="text-[16pt] flex-1"/>
+            <div className="flex items-baseline">
+              <Label htmlFor="department" className="shrink-0">ส่วนราชการ</Label>
+              <Input id="department" name="department" value={formData.department} onChange={handleInputChange} className={inputStyle} />
             </div>
-            <div className="flex items-baseline gap-4">
-              <Label htmlFor="referenceNumber" className="w-[120px]">ที่</Label>
-              <Input id="referenceNumber" name="referenceNumber" value={formData.referenceNumber} onChange={handleInputChange} placeholder="ระบุเลขที่หนังสือ" className="text-[16pt] flex-1"/>
-              <Label htmlFor="date" className="ml-8">วันที่</Label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className={cn(
-                      "w-[280px] justify-start text-left font-normal text-[16pt]",
-                      !formData.date && "text-muted-foreground"
-                    )}
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {formData.date ? format(formData.date, "d MMMM yyyy", { locale: th }) : <span>เลือกวันที่</span>}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    selected={formData.date}
-                    onSelect={handleDateChange}
-                    initialFocus
-                    locale={th}
-                  />
-                </PopoverContent>
-              </Popover>
+
+            <div className="flex items-baseline gap-8">
+              <div className="flex items-baseline w-1/2">
+                <Label htmlFor="referenceNumber" className="shrink-0">ที่</Label>
+                <Input id="referenceNumber" name="referenceNumber" value={formData.referenceNumber} onChange={handleInputChange} className={inputStyle} />
+              </div>
+              <div className="flex items-baseline w-1/2">
+                <Label htmlFor="date" className="shrink-0">วันที่</Label>
+                <div className="flex-1 ml-2">
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant={"ghost"}
+                        className={cn(
+                          "w-full justify-start text-left font-normal text-[16pt] p-0 h-auto border-b border-dotted border-black rounded-none hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0",
+                          !formData.date && "text-muted-foreground"
+                        )}
+                      >
+                        {formData.date ? format(formData.date, "d MMMM yyyy", { locale: th }) : <span>&nbsp;</span>}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0">
+                      <Calendar
+                        mode="single"
+                        selected={formData.date}
+                        onSelect={handleDateChange}
+                        initialFocus
+                        locale={th}
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              </div>
             </div>
-            <div className="flex items-baseline gap-4">
-              <Label htmlFor="subject" className="w-[120px]">เรื่อง</Label>
-              <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange} placeholder="ระบุเรื่องของบันทึกข้อความ" className="text-[16pt] flex-1"/>
+
+            <div className="flex items-baseline">
+              <Label htmlFor="subject" className="shrink-0">เรื่อง</Label>
+              <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange} className={inputStyle}/>
             </div>
-            <div className="flex items-baseline gap-4">
-              <Label htmlFor="recipient" className="w-[120px]">เรียน</Label>
-              <Input id="recipient" name="recipient" value={formData.recipient} onChange={handleInputChange} placeholder="ระบุผู้รับ" className="text-[16pt] flex-1"/>
+
+            <div className="flex items-baseline">
+              <Label htmlFor="recipient" className="shrink-0">เรียน</Label>
+              <Input id="recipient" name="recipient" value={formData.recipient} onChange={handleInputChange} className={`${inputStyle} border-solid border-b-2`}/>
             </div>
-            <div className="flex items-baseline gap-4">
-              <Label htmlFor="referencedDoc" className="w-[120px]">อ้างถึง</Label>
-              <Input id="referencedDoc" name="referencedDoc" value={formData.referencedDoc} onChange={handleInputChange} placeholder="ระบุเอกสารอ้างถึง (ถ้ามี)" className="text-[16pt] flex-1"/>
+            
+            <div className="flex items-baseline">
+              <Label htmlFor="referencedDoc" className="shrink-0">อ้างถึง</Label>
+              <Input id="referencedDoc" name="referencedDoc" value={formData.referencedDoc} onChange={handleInputChange} placeholder="ระบุเอกสารอ้างถึง (ถ้ามี)" className={cn(inputStyle, placeholderStyle)}/>
             </div>
-            <div className="flex items-baseline gap-4">
-              <Label htmlFor="attachments" className="w-[120px]">สิ่งที่ส่งมาด้วย</Label>
-              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} placeholder="ระบุเอกสารแนบ (ถ้ามี)" className="text-[16pt] flex-1"/>
+
+            <div className="flex items-baseline">
+              <Label htmlFor="attachments" className="shrink-0">สิ่งที่ส่งมาด้วย</Label>
+              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} placeholder="ระบุเอกสารแนบ (ถ้ามี)" className={cn(inputStyle, placeholderStyle)}/>
             </div>
           </div>
           

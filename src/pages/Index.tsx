@@ -259,7 +259,7 @@ const ThaiMemoForm = () => {
             })],
             alignment: AlignmentType.CENTER,
             indent: {
-              left: "50%"
+              left: "9.6cm"
             },
           }),
           new Paragraph({
@@ -269,7 +269,7 @@ const ThaiMemoForm = () => {
             })],
             alignment: AlignmentType.CENTER,
             indent: {
-              left: "50%"
+              left: "9.6cm"
             },
           }),
         ],

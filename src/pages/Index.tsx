@@ -162,18 +162,18 @@ const ThaiMemoForm = () => {
           <div className="mt-4 space-y-2">
              <Textarea name="reason" value={formData.reason} onChange={handleInputChange}
               placeholder="กรอกข้อมูล..."
-              className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)}
-              rows={7}
+              className={cn("w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm]", placeholderStyle)}
+              rows={4}
             />
             <Textarea name="objective" value={formData.objective} onChange={handleInputChange}
               placeholder="กรอกข้อมูล..."
-              className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)}
-              rows={7}
+              className={cn("w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm]", placeholderStyle)}
+              rows={4}
             />
             <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange}
               placeholder="กรอกข้อมูล..."
-              className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)}
-              rows={7}
+              className={cn("w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm]", placeholderStyle)}
+              rows={4}
             />
           </div>
 

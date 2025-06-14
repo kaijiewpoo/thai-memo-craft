@@ -18,13 +18,13 @@ const ThaiMemoForm = () => {
     department: "สำนักนายกรัฐมนตรี สำนักงานปลัดสำนักนายกรัฐมนตรี โทร. ๐ ๒๒๘๓ ๔๕๕๐ - ๕๔",
     referenceNumber: "นร ๐๑๐๖/",
     date: undefined as Date | undefined,
-    subject: "กกกกกกกกกกกกกกกกกกกกกกกกกกกกก",
-    salutation: "กกกกกกกกกกกกกกกกกกกกกกกกกกกกกกก",
+    subject: "",
+    salutation: "",
     referenceTo: "",
     attachments: "",
-    reason: "กกกกกกกก...",
-    objective: "กกกกกกกก...",
-    conclusion: "กกกกกกกก...",
+    reason: "",
+    objective: "",
+    conclusion: "",
     signerName: "",
     signerPosition: ""
   };
@@ -110,12 +110,12 @@ const ThaiMemoForm = () => {
 
             <div className="flex items-baseline">
               <Label htmlFor="subject" className="shrink-0 text-[17pt] font-bold">เรื่อง</Label>
-              <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange} className={inputStyle} />
+              <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กกกกกกกกกกกกกกกกกกกกกกกกกกกกก" />
             </div>
 
             <div className="flex items-baseline">
               <Label htmlFor="salutation" className="shrink-0 text-[17pt] font-bold">เรียน</Label>
-              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={inputStyle} />
+              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กกกกกกกกกกกกกกกกกกกกกกกกกกกกก" />
             </div>
 
             <div className="flex items-baseline">
@@ -130,9 +130,9 @@ const ThaiMemoForm = () => {
           </div>
           
           <div className="mt-4 space-y-2">
-             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} className="w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]" rows={5} />
-            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} className="w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]" rows={5} />
-            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} className="w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]" rows={5} />
+             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} placeholder="กกกกกกกก..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
+            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} placeholder="กกกกกกกก..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
+            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} placeholder="กกกกกกกก..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
           </div>
 
           <div className="flex justify-end mt-8">

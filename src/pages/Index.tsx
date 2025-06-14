@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -11,7 +10,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
-
 const ThaiMemoForm = () => {
   const {
     toast
@@ -127,7 +125,7 @@ const ThaiMemoForm = () => {
 
             <div className="flex items-baseline">
               <Label htmlFor="attachments" className="shrink-0 text-[17pt]">สิ่งที่ส่งมาด้วย</Label>
-              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
+              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} placeholder="จงเติมข้อมูล" className="" />
             </div>
           </div>
           

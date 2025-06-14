@@ -26,6 +26,8 @@ const ThaiMemoForm = () => {
     date: undefined as Date | undefined,
     subject: "กกกกกกกกกกกกกกกกกกกกกกกกกกกกก",
     salutation: "กกกกกกกกกกกกกกกกกกกกกกกกกกกกกกก",
+    referenceTo: "",
+    attachments: "",
     reason: "กกกกกกกก...",
     objective: "กกกกกกกก...",
     conclusion: "กกกกกกกก...",
@@ -128,8 +130,18 @@ const ThaiMemoForm = () => {
             </div>
 
             <div className="flex items-baseline">
-              <Label htmlFor="salutation" className="shrink-0">คำขึ้นต้น</Label>
-              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={`${inputStyle} border-solid border-b-2`}/>
+              <Label htmlFor="salutation" className="shrink-0">เรียน</Label>
+              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={inputStyle}/>
+            </div>
+
+            <div className="flex items-baseline">
+              <Label htmlFor="referenceTo" className="shrink-0">อ้างถึง</Label>
+              <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange} className={inputStyle} placeholder="..."/>
+            </div>
+
+            <div className="flex items-baseline">
+              <Label htmlFor="attachments" className="shrink-0">สิ่งที่ส่งมาด้วย</Label>
+              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} className={inputStyle} placeholder="..."/>
             </div>
           </div>
           

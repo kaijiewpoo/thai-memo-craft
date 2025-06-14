@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -20,14 +21,14 @@ const ThaiMemoForm = () => {
   const { toast } = useToast();
   
   const initialData = {
-    department: "",
-    referenceNumber: "",
-    date: new Date(),
-    subject: "",
-    recipient: "",
-    referencedDoc: "",
-    attachments: "",
-    mainContent: "ตามที่ (ระบุเรื่องเดิม)... จึงเรียนมาเพื่อโปรดพิจารณา/ทราบ/ดำเนินการต่อไป",
+    department: "สำนักนายกรัฐมนตรี สำนักงานปลัดสำนักนายกรัฐมนตรี โทร. ๐ ๒๒๘๓ ๔๕๕๐ - ๕๔",
+    referenceNumber: "นร ๐๑๐๖/",
+    date: undefined as Date | undefined,
+    subject: "กกกกกกกกกกกกกกกกกกกกกกกกกกกกก",
+    salutation: "กกกกกกกกกกกกกกกกกกกกกกกกกกกกกกก",
+    reason: "กกกกกกกก...",
+    objective: "กกกกกกกก...",
+    conclusion: "กกกกกกกก...",
     signerName: "",
     signerPosition: "",
   };
@@ -76,7 +77,7 @@ const ThaiMemoForm = () => {
     <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-4 sm:p-8 flex justify-center items-start font-sarabun">
       <div className="w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[2.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white">
         <header className="relative mb-[1cm]">
-          <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute left-0 top-[-1.5cm] h-[3cm] w-auto" />
+          <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute top-[-1.5cm] left-1/2 -translate-x-1/2 h-[3cm] w-auto" />
           <h1 className="text-[25pt] font-bold text-center pt-[0.5cm]">บันทึกข้อความ</h1>
         </header>
 
@@ -104,7 +105,7 @@ const ThaiMemoForm = () => {
                           !formData.date && "text-muted-foreground"
                         )}
                       >
-                        {formData.date ? format(formData.date, "d MMMM yyyy", { locale: th }) : <span>&nbsp;</span>}
+                        {formData.date ? format(formData.date, "d MMMM yyyy", { locale: th }) : <span className={cn("italic text-gray-400/80", placeholderStyle)}>วัน เดือน ปี</span>}
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0">
@@ -127,28 +128,32 @@ const ThaiMemoForm = () => {
             </div>
 
             <div className="flex items-baseline">
-              <Label htmlFor="recipient" className="shrink-0">เรียน</Label>
-              <Input id="recipient" name="recipient" value={formData.recipient} onChange={handleInputChange} className={`${inputStyle} border-solid border-b-2`}/>
-            </div>
-            
-            <div className="flex items-baseline">
-              <Label htmlFor="referencedDoc" className="shrink-0">อ้างถึง</Label>
-              <Input id="referencedDoc" name="referencedDoc" value={formData.referencedDoc} onChange={handleInputChange} placeholder="ระบุเอกสารอ้างถึง (ถ้ามี)" className={cn(inputStyle, placeholderStyle)}/>
-            </div>
-
-            <div className="flex items-baseline">
-              <Label htmlFor="attachments" className="shrink-0">สิ่งที่ส่งมาด้วย</Label>
-              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} placeholder="ระบุเอกสารแนบ (ถ้ามี)" className={cn(inputStyle, placeholderStyle)}/>
+              <Label htmlFor="salutation" className="shrink-0">คำขึ้นต้น</Label>
+              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={`${inputStyle} border-solid border-b-2`}/>
             </div>
           </div>
           
-          <div className="mt-4">
+          <div className="mt-4 space-y-4">
              <Textarea
-              name="mainContent"
-              value={formData.mainContent}
+              name="reason"
+              value={formData.reason}
               onChange={handleInputChange}
               className="w-full text-[16pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]"
-              rows={15}
+              rows={5}
+            />
+            <Textarea
+              name="objective"
+              value={formData.objective}
+              onChange={handleInputChange}
+              className="w-full text-[16pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]"
+              rows={5}
+            />
+            <Textarea
+              name="conclusion"
+              value={formData.conclusion}
+              onChange={handleInputChange}
+              className="w-full text-[16pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]"
+              rows={5}
             />
           </div>
 
@@ -156,10 +161,10 @@ const ThaiMemoForm = () => {
             <div className="w-2/5 text-center space-y-2">
                <p className="h-[2em]">(ลงชื่อ).....................................................</p>
               <div>
-                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[16pt] border-none shadow-none focus:ring-0 p-0" placeholder="(นาย/นาง/นางสาว....................................)"/>
+                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[16pt] border-none shadow-none focus:ring-0 p-0" placeholder="(........พิมพ์ชื่อเต็ม........)"/>
               </div>
               <div>
-                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[16pt] border-none shadow-none focus:ring-0 p-0" placeholder="(ตำแหน่ง....................................)"/>
+                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[16pt] border-none shadow-none focus:ring-0 p-0" placeholder="ตำแหน่ง"/>
               </div>
             </div>
           </div>

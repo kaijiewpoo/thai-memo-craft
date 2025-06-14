@@ -110,39 +110,39 @@ const ThaiMemoForm = () => {
 
             <div className="flex items-baseline">
               <Label htmlFor="subject" className="shrink-0 text-[17pt] font-bold">เรื่อง</Label>
-              <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กกกกกกกกกกกกกกกกกกกกกกกกกกกกก" />
+              <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
             </div>
 
             <div className="flex items-baseline">
               <Label htmlFor="salutation" className="shrink-0 text-[17pt] font-bold">เรียน</Label>
-              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กกกกกกกกกกกกกกกกกกกกกกกกกกกกก" />
+              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
             </div>
 
             <div className="flex items-baseline">
               <Label htmlFor="referenceTo" className="shrink-0 text-[17pt] font-bold">อ้างถึง</Label>
-              <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กกกกกกกกกกกกกกกกกกกกกกกกกกกกก" />
+              <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
             </div>
 
             <div className="flex items-baseline">
               <Label htmlFor="attachments" className="shrink-0 text-[17pt] font-bold">สิ่งที่ส่งมาด้วย</Label>
-              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กกกกกกกกกกกกกกกกกกกกกกกกกกกกก" />
+              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
             </div>
           </div>
           
           <div className="mt-4 space-y-2">
-             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} placeholder="กกกกกกกก..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
-            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} placeholder="กกกกกกกก..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
-            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} placeholder="กกกกกกกก..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
+             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
+            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
+            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
           </div>
 
           <div className="flex justify-end mt-8">
             <div className="w-2/5 text-center space-y-2">
                <p className="h-[2em]">(ลงชื่อ).....................................................</p>
               <div>
-                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[17pt] border-none shadow-none focus:ring-0 p-0" placeholder="(........พิมพ์ชื่อเต็ม........)" />
+                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[17pt] border-none shadow-none focus:ring-0 p-0" placeholder="จงเติมข้อมูล" />
               </div>
               <div>
-                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[17pt] border-none shadow-none focus:ring-0 p-0" placeholder="ตำแหน่ง" />
+                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[17pt] border-none shadow-none focus:ring-0 p-0" placeholder="จงเติมข้อมูล" />
               </div>
             </div>
           </div>

@@ -137,9 +137,10 @@ const ThaiMemoForm = () => {
 
           <div className="flex justify-end mt-8">
             <div className="w-2/5 text-center space-y-2">
-               <p className="h-[2em]">(ลงชื่อ).....................................................</p>
-              <div>
+              <div className="flex justify-center items-baseline">
+                <span className="text-[17pt]">(</span>
                 <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[17pt] border-none shadow-none focus:ring-0 p-0" placeholder="จงเติมข้อมูล" />
+                <span className="text-[17pt]">)</span>
               </div>
               <div>
                  <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[17pt] border-none shadow-none focus:ring-0 p-0" placeholder="จงเติมข้อมูล" />

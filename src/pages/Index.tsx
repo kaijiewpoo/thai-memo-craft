@@ -15,8 +15,8 @@ const ThaiMemoForm = () => {
     toast
   } = useToast();
   const initialData = {
-    department: "สำนักนายกรัฐมนตรี สำนักงานปลัดสำนักนายกรัฐมนตรี โทร. ๐ ๒๒๘๓ ๔๕๕๐ - ๕๔",
-    referenceNumber: "นร ๐๑๐๖/",
+    department: "",
+    referenceNumber: "",
     date: undefined as Date | undefined,
     subject: "",
     salutation: "",
@@ -81,13 +81,13 @@ const ThaiMemoForm = () => {
           <div className="space-y-1">
             <div className="flex items-baseline">
               <Label htmlFor="department" className="shrink-0 text-[17pt] font-bold">ส่วนราชการ</Label>
-              <Input id="department" name="department" value={formData.department} onChange={handleInputChange} className={inputStyle} />
+              <Input id="department" name="department" value={formData.department} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
             </div>
 
             <div className="flex items-baseline gap-8">
               <div className="flex items-baseline w-1/2">
                 <Label htmlFor="referenceNumber" className="shrink-0 text-[17pt] font-bold">ที่</Label>
-                <Input id="referenceNumber" name="referenceNumber" value={formData.referenceNumber} onChange={handleInputChange} className={inputStyle} />
+                <Input id="referenceNumber" name="referenceNumber" value={formData.referenceNumber} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="จงเติมข้อมูล" />
               </div>
               <div className="flex items-baseline w-1/2">
                 <Label htmlFor="date" className="shrink-0 text-[17pt] font-bold">วันที่</Label>
@@ -130,9 +130,9 @@ const ThaiMemoForm = () => {
           </div>
           
           <div className="mt-4 space-y-2">
-             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
-            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
-            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={5} />
+             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
+            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
+            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[17pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
           </div>
 
           <div className="flex justify-end mt-8">

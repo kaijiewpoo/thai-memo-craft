@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -10,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
-import jsPDF from "jspdf";
+import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { Document, Packer, Paragraph, TextRun, AlignmentType } from "docx";
 import { saveAs } from "file-saver";

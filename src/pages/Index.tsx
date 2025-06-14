@@ -1,5 +1,3 @@
-
-```tsx
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -85,7 +83,7 @@ const ThaiMemoForm = () => {
         </header>
 
         <main className="text-[16pt]">
-          <div className="space-y-3">
+          <div className="space-y-2">
             <div className="flex items-baseline">
               <Label htmlFor="department" className="shrink-0 text-[17pt] font-bold">ส่วนราชการ</Label>
               <Input id="department" name="department" value={formData.department} onChange={handleInputChange} className={inputStyle} />
@@ -97,7 +95,7 @@ const ThaiMemoForm = () => {
                 <Input id="referenceNumber" name="referenceNumber" value={formData.referenceNumber} onChange={handleInputChange} className={inputStyle} />
               </div>
               <div className="flex items-baseline w-1/2">
-                <Label htmlFor="date" className="shrink-0">วันที่</Label>
+                <Label htmlFor="date" className="shrink-0 text-[17pt] font-bold">วันที่</Label>
                 <div className="flex-1 ml-2">
                   <Popover>
                     <PopoverTrigger asChild>
@@ -146,7 +144,7 @@ const ThaiMemoForm = () => {
             </div>
           </div>
           
-          <div className="mt-4 space-y-4">
+          <div className="mt-4 space-y-2">
              <Textarea
               name="reason"
               value={formData.reason}
@@ -193,4 +191,3 @@ const ThaiMemoForm = () => {
 };
 
 export default ThaiMemoForm;
-```

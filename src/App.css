@@ -40,3 +40,18 @@
 .read-the-docs {
   color: #888;
 }
+
+@media print {
+  /* ซ่อนแถบปุ่ม, กำหนดให้แสดงเฉพาะตัวเอกสาร */
+  .print\:hidden {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+  #root {
+    padding: 0 !important;
+    text-align: left !important;
+    background: white !important;
+  }
+}

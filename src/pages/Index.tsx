@@ -68,6 +68,9 @@ const ThaiMemoForm = () => {
       description: "ข้อมูลในฟอร์มทั้งหมดถูกล้างแล้ว"
     });
   };
+  const handlePrint = () => {
+    window.print();
+  };
   const inputStyle =
     "text-[23px] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent focus:bg-transparent bg-transparent";
   const placeholderStyle = "placeholder:italic placeholder:text-gray-400/80";
@@ -194,10 +197,11 @@ const ThaiMemoForm = () => {
           </div>
         </main>
       </div>
-      <div className="fixed bottom-4 right-4 flex flex-col gap-3">
+      <div className="fixed bottom-4 right-4 flex flex-col gap-3 print:hidden">
         <Button onClick={handleGeneratePdf} className="bg-blue-600 hover:bg-blue-700">สร้าง PDF</Button>
         <Button onClick={handleSaveData} className="bg-green-600 hover:bg-green-700">บันทึกข้อมูล</Button>
         <Button onClick={handleClearForm} variant="destructive">ล้างข้อมูล</Button>
+        <Button onClick={handlePrint} className="bg-zinc-600 hover:bg-zinc-700">พิมพ์</Button>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -78,7 +79,7 @@ const ThaiMemoForm = () => {
     <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-4 sm:p-8 flex justify-center items-start font-sarabun">
       <div className="w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[2.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white">
         <header className="relative mb-[1cm]">
-          <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute top-[-1.5cm] left-0 h-[1.5cm] w-auto" />
+          <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute top-[-1cm] left-0 h-[1.5cm] w-auto" />
           <h1 className="text-[25pt] font-bold text-center pt-[0.5cm]">บันทึกข้อความ</h1>
         </header>
 

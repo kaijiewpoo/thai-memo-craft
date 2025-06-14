@@ -198,8 +198,6 @@ const ThaiMemoForm = () => {
         </main>
       </div>
       <div className="fixed bottom-4 right-4 flex flex-col gap-3 print:hidden">
-        <Button onClick={handleGeneratePdf} className="bg-blue-600 hover:bg-blue-700">สร้าง PDF</Button>
-        <Button onClick={handleSaveData} className="bg-green-600 hover:bg-green-700">บันทึกข้อมูล</Button>
         <Button onClick={handleClearForm} variant="destructive">ล้างข้อมูล</Button>
         <Button onClick={handlePrint} className="bg-zinc-600 hover:bg-zinc-700">พิมพ์</Button>
       </div>

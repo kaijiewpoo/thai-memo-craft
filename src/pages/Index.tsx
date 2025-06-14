@@ -82,6 +82,10 @@ const ThaiMemoForm = () => {
         className="relative a4-print-border w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white print:shadow-none print:pt-[1.5cm] print:pr-[2cm] print:pb-[2.5cm] print:pl-[3cm] print:text-black print:dark:text-black print:mx-0 print:my-0"
         style={{
           boxSizing: "border-box",
+          // ป้องกัน scrollbar หรือ overflow default
+          overflow: "hidden",
+          maxHeight: "297mm",
+          height: "297mm",
         }}
       >
         {/* เอกสารเนื้อหาทั้งหมด */}
@@ -90,9 +94,8 @@ const ThaiMemoForm = () => {
           <h1 className="text-[25pt] font-bold text-center pt-[0.5cm]">บันทึกข้อความ</h1>
         </header>
 
-        {/* ... keep existing code (main document UI) the same ... */}
+        {/* MAIN CONTENT */}
         <main className="text-[16pt]">
-          {/* ... keep existing code (form and inputs) the same ... */}
           <div className="space-y-1">
             <div className="flex items-baseline">
               <Label htmlFor="department" className="shrink-0 text-[17pt] font-bold">ส่วนราชการ</Label>
@@ -169,20 +172,44 @@ const ThaiMemoForm = () => {
           </div>
           
           <div className="mt-4 space-y-2">
-             <Textarea name="reason" value={formData.reason} onChange={handleInputChange}
+            <Textarea
+              name="reason"
+              value={formData.reason}
+              onChange={handleInputChange}
               placeholder="กรอกข้อมูล..."
-              className={cn("w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm]", placeholderStyle)}
               rows={4}
+              maxLength={600}
+              className={cn(
+                "w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm] max-h-[5.5em] resize-none overflow-y-auto print:overflow-hidden",
+                placeholderStyle
+              )}
+              style={{ minHeight: "4em", maxHeight: "5.5em" }}
             />
-            <Textarea name="objective" value={formData.objective} onChange={handleInputChange}
+            <Textarea
+              name="objective"
+              value={formData.objective}
+              onChange={handleInputChange}
               placeholder="กรอกข้อมูล..."
-              className={cn("w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm]", placeholderStyle)}
               rows={4}
+              maxLength={600}
+              className={cn(
+                "w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm] max-h-[5.5em] resize-none overflow-y-auto print:overflow-hidden",
+                placeholderStyle
+              )}
+              style={{ minHeight: "4em", maxHeight: "5.5em" }}
             />
-            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange}
+            <Textarea
+              name="conclusion"
+              value={formData.conclusion}
+              onChange={handleInputChange}
               placeholder="กรอกข้อมูล..."
-              className={cn("w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm]", placeholderStyle)}
               rows={4}
+              maxLength={600}
+              className={cn(
+                "w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm] max-h-[5.5em] resize-none overflow-y-auto print:overflow-hidden",
+                placeholderStyle
+              )}
+              style={{ minHeight: "4em", maxHeight: "5.5em" }}
             />
           </div>
 

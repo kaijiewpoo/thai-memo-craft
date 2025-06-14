@@ -1,4 +1,3 @@
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -70,6 +69,16 @@
     position: relative !important;
     page-break-after: avoid !important;
     overflow: hidden !important;
+    height: 297mm !important; /* บังคับสูงสุดไม่ให้เกิน 1 หน้า */
+  }
+  /* ซ่อน scrollbar ใน textarea เฉพาะตอนไปพิมพ์ */
+  textarea {
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: auto !important;
+    resize: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
   }
   @page {
     size: A4;

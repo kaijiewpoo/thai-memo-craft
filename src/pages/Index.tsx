@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -69,7 +70,7 @@ const ThaiMemoForm = () => {
       description: "ข้อมูลในฟอร์มทั้งหมดถูกล้างแล้ว"
     });
   };
-  const inputStyle = "text-[20pt] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent";
+  const inputStyle = "text-[23px] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent";
   const placeholderStyle = "placeholder:italic placeholder:text-gray-400/80";
   return <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-8 pt-[1.5cm] flex justify-center items-start font-sarabun">
       <div className="w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white">
@@ -95,7 +96,7 @@ const ThaiMemoForm = () => {
                 <div className="flex-1 ml-2">
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button variant={"ghost"} className={cn("w-full justify-start text-left font-normal text-[20pt] p-0 h-auto border-b border-dotted border-black rounded-none hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0", !formData.date && "text-muted-foreground")}>
+                      <Button variant={"ghost"} className={cn("w-full justify-start text-left font-normal text-[23px] p-0 h-auto border-b border-dotted border-black rounded-none hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0", !formData.date && "text-muted-foreground")}>
                         {formData.date ? format(formData.date, "d MMMM yyyy", {
                         locale: th
                       }) : <span className={cn("italic text-gray-400/80", placeholderStyle)}>วัน เดือน ปี</span>}
@@ -131,20 +132,20 @@ const ThaiMemoForm = () => {
           </div>
           
           <div className="mt-4 space-y-2">
-             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[20pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
-            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[20pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
-            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[20pt] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
+             <Textarea name="reason" value={formData.reason} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
+            <Textarea name="objective" value={formData.objective} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
+            <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange} placeholder="จงเติมข้อมูล..." className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)} rows={7} />
           </div>
 
           <div className="flex justify-end mt-8">
             <div className="w-2/5 text-center space-y-2">
               <div className="flex justify-center items-baseline">
                 <span className="text-[17pt]">(</span>
-                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[20pt] border-none shadow-none focus:ring-0 p-0" placeholder="จงเติมข้อมูล" />
+                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0" placeholder="จงเติมข้อมูล" />
                 <span className="text-[17pt]">)</span>
               </div>
               <div>
-                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[20pt] border-none shadow-none focus:ring-0 p-0" placeholder="จงเติมข้อมูล" />
+                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0" placeholder="จงเติมข้อมูล" />
               </div>
             </div>
           </div>

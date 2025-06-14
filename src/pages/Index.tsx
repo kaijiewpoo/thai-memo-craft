@@ -69,10 +69,8 @@ const ThaiMemoForm = () => {
     });
   };
   const inputStyle =
-    "text-[28px] min-h-[56px] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent focus:bg-transparent bg-transparent";
+    "text-[23px] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent focus:bg-transparent bg-transparent";
   const placeholderStyle = "placeholder:italic placeholder:text-gray-400/80";
-  const textareaStyle =
-    "w-full text-[28px] min-h-[120px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]";
 
   return (
     <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-8 pt-[1.5cm] flex justify-center items-start font-sarabun">
@@ -108,7 +106,7 @@ const ThaiMemoForm = () => {
                       <Button
                         variant={"ghost"}
                         className={cn(
-                          "w-full justify-start text-left font-normal text-[28px] min-h-[56px] p-0 h-auto border-b border-dotted border-black rounded-none hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 bg-transparent",
+                          "w-full justify-start text-left font-normal text-[23px] p-0 h-auto border-b border-dotted border-black rounded-none hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 bg-transparent",
                           !formData.date && "text-muted-foreground"
                         )}
                       >
@@ -161,17 +159,17 @@ const ThaiMemoForm = () => {
           <div className="mt-4 space-y-2">
              <Textarea name="reason" value={formData.reason} onChange={handleInputChange}
               placeholder="กรอกข้อมูล..."
-              className={cn(textareaStyle, placeholderStyle)}
+              className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)}
               rows={7}
             />
             <Textarea name="objective" value={formData.objective} onChange={handleInputChange}
               placeholder="กรอกข้อมูล..."
-              className={cn(textareaStyle, placeholderStyle)}
+              className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)}
               rows={7}
             />
             <Textarea name="conclusion" value={formData.conclusion} onChange={handleInputChange}
               placeholder="กรอกข้อมูล..."
-              className={cn(textareaStyle, placeholderStyle)}
+              className={cn("w-full text-[23px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:2.5cm]", placeholderStyle)}
               rows={7}
             />
           </div>
@@ -181,14 +179,14 @@ const ThaiMemoForm = () => {
               <div className="flex justify-center items-baseline">
                 <span className="text-[17pt]">(</span>
                 <Input name="signerName" value={formData.signerName} onChange={handleInputChange}
-                  className="text-center text-[28px] min-h-[56px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent"
+                  className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent"
                   placeholder="กรอกข้อมูล"
                 />
                 <span className="text-[17pt]">)</span>
               </div>
               <div>
                  <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange}
-                   className="text-center text-[28px] min-h-[56px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent"
+                   className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent"
                    placeholder="กรอกข้อมูล"
                  />
               </div>

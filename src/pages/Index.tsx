@@ -244,7 +244,7 @@ const ThaiMemoForm = () => {
 
           <div className="flex justify-end mt-8">
             <div className="w-2/5 text-center space-y-2">
-              <div className="flex justify-center">
+              <div className="flex justify-start pl-4">
                 <Input 
                   name="signerPrefix" 
                   value={formData.signerPrefix} 

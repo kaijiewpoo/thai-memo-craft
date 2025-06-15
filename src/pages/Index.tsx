@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -269,15 +268,7 @@ const ThaiMemoForm = () => {
         </main>
 
         {/* LOGO + APP NAME (VISIBLE ONLY ON PRINT AT BOTTOM LEFT) */}
-        <div className="hidden print:flex items-center gap-2 absolute left-4 bottom-4">
-          <img
-            src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png"
-            alt="Lovable Logo"
-            style={{ width: "2cm", height: "auto" }}
-            className="print:opacity-90"
-          />
-          <span className="text-[13pt] font-bold text-zinc-700 print:text-black">สร้างด้วย Lovable</span>
-        </div>
+        
       </div>
 
       {/* ปุ่มเมนู UI (ไม่แสดงตอนพิมพ์) */}

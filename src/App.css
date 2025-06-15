@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -51,37 +52,116 @@
   }
   body {
     background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   #root {
     padding: 0 !important;
     text-align: left !important;
     background: white !important;
+    margin: 0 !important;
+    max-width: none !important;
   }
-  /* บังคับให้ A4 */
-  .a4-print-border {
-    width: 210mm !important;
-    min-height: 297mm !important;
-    max-height: 297mm !important;
-    box-sizing: border-box !important;
-    border: 2px solid #000 !important;
-    margin: 0 auto !important;
-    background: white !important;
-    position: relative !important;
-    page-break-after: avoid !important;
-    overflow: hidden !important;
-    height: 297mm !important; /* บังคับสูงสุดไม่ให้เกิน 1 หน้า */
+  
+  /* กำหนดขนาดหน้ากระดาษ A4 */
+  @page {
+    size: A4 portrait;
+    margin: 1.5cm 2cm 2.5cm 3cm;
   }
-  /* ซ่อน scrollbar ใน textarea เฉพาะตอนไปพิมพ์ */
+  
+  /* ปรับ container หลักให้พอดีกับหน้า A4 */
+  .min-h-screen {
+    min-height: auto !important;
+    height: auto !important;
+  }
+  
+  /* ปรับกรอบเอกสารให้พอดี A4 */
+  .w-\[21cm\] {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+  
+  .min-h-\[29\.7cm\] {
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  
+  /* ปรับขนาดตัวอักษรส่วนหัว */
+  .text-\[25pt\] {
+    font-size: 20pt !important;
+    margin-bottom: 0.5cm !important;
+  }
+  
+  /* ปรับขนาดตัวอักษรในเนื้อหา */
+  .text-\[17pt\] {
+    font-size: 14pt !important;
+    line-height: 1.4 !important;
+  }
+  
+  .text-\[23px\] {
+    font-size: 16pt !important;
+  }
+  
+  /* ปรับ textarea ให้พอดีกับหน้า */
   textarea {
     overflow: hidden !important;
-    -webkit-overflow-scrolling: auto !important;
     resize: none !important;
     box-shadow: none !important;
     border: none !important;
     background: transparent !important;
+    font-size: 14pt !important;
+    line-height: 1.6 !important;
+    max-height: 3em !important;
+    min-height: 2em !important;
   }
-  @page {
-    size: A4;
-    margin: 0;
+  
+  /* ปรับระยะห่างระหว่างส่วนต่างๆ */
+  .space-y-1 > * + * {
+    margin-top: 0.3cm !important;
+  }
+  
+  .space-y-2 > * + * {
+    margin-top: 0.2cm !important;
+  }
+  
+  .mt-4 {
+    margin-top: 0.4cm !important;
+  }
+  
+  .mt-8 {
+    margin-top: 0.6cm !important;
+  }
+  
+  .mb-4 {
+    margin-bottom: 0.4cm !important;
+  }
+  
+  /* ป้องกันการแบ่งหน้า */
+  * {
+    page-break-inside: avoid !important;
+  }
+  
+  .space-y-2 {
+    page-break-inside: avoid !important;
+  }
+  
+  main {
+    page-break-inside: avoid !important;
+  }
+  
+  /* ปรับรูปครุฑให้เล็กลง */
+  header img {
+    height: 1.2cm !important;
+    width: auto !important;
+  }
+  
+  /* ปรับพื้นที่ลายเซ็น */
+  .w-2\/5 {
+    width: 35% !important;
+    margin-top: 0.4cm !important;
   }
 }

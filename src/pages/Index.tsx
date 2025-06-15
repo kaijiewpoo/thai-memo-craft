@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -128,19 +127,15 @@ const ThaiMemoForm = () => {
               <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูl" />
             </div>
 
-            {formData.referenceTo && (
-              <div className="flex items-baseline">
-                <Label htmlFor="referenceTo" className="shrink-0 text-[17pt]">อ้างถึง</Label>
-                <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูล" />
-              </div>
-            )}
+            <div className={cn("flex items-baseline", !formData.referenceTo && "print:hidden")}>
+              <Label htmlFor="referenceTo" className="shrink-0 text-[17pt]">อ้างถึง</Label>
+              <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูล" />
+            </div>
 
-            {formData.attachments && (
-              <div className="flex items-baseline">
-                <Label htmlFor="attachments" className="shrink-0 text-[17pt]">สิ่งที่ส่งมาด้วย</Label>
-                <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูล" />
-              </div>
-            )}
+            <div className={cn("flex items-baseline", !formData.attachments && "print:hidden")}>
+              <Label htmlFor="attachments" className="shrink-0 text-[17pt]">สิ่งที่ส่งมาด้วย</Label>
+              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูล" />
+            </div>
           </div>
           
           <div className="mt-4 space-y-2">

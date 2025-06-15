@@ -1,4 +1,3 @@
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -42,7 +41,7 @@
   color: #888;
 }
 
-/* PRINT SETTINGS FOR A4 */
+/* ปรับสำหรับการพิมพ์ */
 @media print {
   .print\:hidden {
     display: none !important;
@@ -54,28 +53,25 @@
     background: white !important;
   }
   #root {
-    background: white !important;
-    text-align: left !important;
-    margin: 0 !important;
     padding: 0 !important;
+    text-align: left !important;
+    background: white !important;
   }
-  /* A4 full border */
+  /* บังคับให้ A4 */
   .a4-print-border {
-    width: 210mm !important; /* 21 ซม. = 210 มม. */
-    min-width: 210mm !important;
-    max-width: 210mm !important;
+    width: 210mm !important;
     min-height: 297mm !important;
     max-height: 297mm !important;
-    height: 297mm !important; /* 29.7 ซม. = 297 มม. */
     box-sizing: border-box !important;
     border: 2px solid #000 !important;
     margin: 0 auto !important;
-    padding: 0 !important;
     background: white !important;
     position: relative !important;
-    overflow: hidden !important; /* ห้ามเกินขอบกระดาษ */
     page-break-after: avoid !important;
+    overflow: hidden !important;
+    height: 297mm !important; /* บังคับสูงสุดไม่ให้เกิน 1 หน้า */
   }
+  /* ซ่อน scrollbar ใน textarea เฉพาะตอนไปพิมพ์ */
   textarea {
     overflow: hidden !important;
     -webkit-overflow-scrolling: auto !important;
@@ -83,7 +79,6 @@
     box-shadow: none !important;
     border: none !important;
     background: transparent !important;
-    max-height: 5.5em !important;
   }
   @page {
     size: A4;

@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -10,10 +11,10 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
+
 const ThaiMemoForm = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
+  
   const initialData = {
     department: "",
     referenceNumber: "",
@@ -28,17 +29,17 @@ const ThaiMemoForm = () => {
     signerName: "",
     signerPosition: ""
   };
+
   const [formData, setFormData] = useState(initialData);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
+
   const handleDateChange = (date: Date | undefined) => {
     if (date) {
       setFormData(prev => ({
@@ -47,6 +48,7 @@ const ThaiMemoForm = () => {
       }));
     }
   };
+
   const handleGeneratePdf = () => {
     console.log("Generating PDF with data:", JSON.stringify(formData, null, 2));
     toast({
@@ -54,6 +56,7 @@ const ThaiMemoForm = () => {
       description: "ข้อมูลถูกรวบรวมในคอนโซล และพร้อมส่งไปยังระบบหลังบ้านเพื่อสร้างเป็นไฟล์ PDF"
     });
   };
+
   const handleSaveData = () => {
     console.log("Saving data:", JSON.stringify(formData, null, 2));
     toast({
@@ -61,6 +64,7 @@ const ThaiMemoForm = () => {
       description: "ข้อมูลถูกบันทึกเรียบร้อยแล้ว (จำลอง)"
     });
   };
+
   const handleClearForm = () => {
     setFormData(initialData);
     toast({
@@ -68,29 +72,22 @@ const ThaiMemoForm = () => {
       description: "ข้อมูลในฟอร์มทั้งหมดถูกล้างแล้ว"
     });
   };
+
   const handlePrint = () => {
     window.print();
   };
-  const inputStyle =
-    "text-[23px] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent focus:bg-transparent bg-transparent";
+
+  const inputStyle = "text-[23px] flex-1 ml-2 p-0 h-auto border-0 border-b border-dotted border-black rounded-none focus-visible:ring-0 shadow-none bg-transparent focus:bg-transparent bg-transparent";
   const placeholderStyle = "placeholder:italic placeholder:text-gray-400/80";
 
   return (
     <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-8 pt-[1.5cm] flex justify-center items-start font-sarabun relative print:bg-white">
       {/* A4 PAPER FRAME */}
-      <div
-        className="relative a4-print-border w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white print:shadow-none print:pt-[1.5cm] print:pr-[2cm] print:pb-[2.5cm] print:pl-[3cm] print:text-black print:dark:text-black print:mx-0 print:my-0"
-        style={{
-          boxSizing: "border-box",
-          // ป้องกัน scrollbar หรือ overflow default
-          overflow: "hidden",
-          maxHeight: "297mm",
-          height: "297mm",
-        }}
-      >
+      <div className="relative w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white print:shadow-none print:pt-[1.5cm] print:pr-[2cm] print:pb-[2.5cm] print:pl-[3cm] print:text-black print:dark:text-black print:mx-0 print:my-0">
+        
         {/* เอกสารเนื้อหาทั้งหมด */}
         <header className="relative mb-4">
-          <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute -top-[0cm] -left-[0cm] h-[1.5cm] w-auto" />
+          <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute -top-[0.2cm] -left-[0.2cm] h-[1.5cm] w-auto" />
           <h1 className="text-[25pt] font-bold text-center pt-[0.5cm]">บันทึกข้อความ</h1>
         </header>
 
@@ -99,7 +96,11 @@ const ThaiMemoForm = () => {
           <div className="space-y-1">
             <div className="flex items-baseline">
               <Label htmlFor="department" className="shrink-0 text-[17pt] font-bold">ส่วนราชการ</Label>
-              <Input id="department" name="department" value={formData.department} onChange={handleInputChange}
+              <Input 
+                id="department" 
+                name="department" 
+                value={formData.department} 
+                onChange={handleInputChange}
                 className={cn(inputStyle, placeholderStyle)}
                 placeholder="กรอกข้อมูล"
               />
@@ -108,7 +109,11 @@ const ThaiMemoForm = () => {
             <div className="flex items-baseline gap-8">
               <div className="flex items-baseline w-1/2">
                 <Label htmlFor="referenceNumber" className="shrink-0 text-[17pt] font-bold">ที่</Label>
-                <Input id="referenceNumber" name="referenceNumber" value={formData.referenceNumber} onChange={handleInputChange}
+                <Input 
+                  id="referenceNumber" 
+                  name="referenceNumber" 
+                  value={formData.referenceNumber} 
+                  onChange={handleInputChange}
                   className={cn(inputStyle, placeholderStyle)}
                   placeholder="กรอกข้อมูล"
                 />
@@ -125,13 +130,21 @@ const ThaiMemoForm = () => {
                           !formData.date && "text-muted-foreground"
                         )}
                       >
-                        {formData.date ? format(formData.date, "d MMMM yyyy", { locale: th }) : (
+                        {formData.date ? (
+                          format(formData.date, "d MMMM yyyy", { locale: th })
+                        ) : (
                           <span className={cn("italic text-gray-400/80", placeholderStyle)}>วัน เดือน ปี</span>
                         )}
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0">
-                      <Calendar mode="single" selected={formData.date} onSelect={handleDateChange} initialFocus locale={th} />
+                      <Calendar
+                        mode="single"
+                        selected={formData.date}
+                        onSelect={handleDateChange}
+                        initialFocus
+                        locale={th}
+                      />
                     </PopoverContent>
                   </Popover>
                 </div>
@@ -140,7 +153,11 @@ const ThaiMemoForm = () => {
 
             <div className="flex items-baseline">
               <Label htmlFor="subject" className="shrink-0 text-[17pt] font-bold">เรื่อง</Label>
-              <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange}
+              <Input 
+                id="subject" 
+                name="subject" 
+                value={formData.subject} 
+                onChange={handleInputChange}
                 className={cn(inputStyle, placeholderStyle)}
                 placeholder="กรอกข้อมูล"
               />
@@ -148,7 +165,11 @@ const ThaiMemoForm = () => {
 
             <div className="flex items-baseline">
               <Label htmlFor="salutation" className="shrink-0 text-[17pt] font-bold">เรียน</Label>
-              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange}
+              <Input 
+                id="salutation" 
+                name="salutation" 
+                value={formData.salutation} 
+                onChange={handleInputChange}
                 className={cn(inputStyle, placeholderStyle)}
                 placeholder="กรอกข้อมูล"
               />
@@ -156,7 +177,11 @@ const ThaiMemoForm = () => {
 
             <div className="flex items-baseline">
               <Label htmlFor="referenceTo" className="shrink-0 text-[17pt]">อ้างถึง</Label>
-              <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange}
+              <Input 
+                id="referenceTo" 
+                name="referenceTo" 
+                value={formData.referenceTo} 
+                onChange={handleInputChange}
                 className={cn(inputStyle, placeholderStyle)}
                 placeholder="กรอกข้อมูล"
               />
@@ -164,7 +189,11 @@ const ThaiMemoForm = () => {
 
             <div className="flex items-baseline">
               <Label htmlFor="attachments" className="shrink-0 text-[17pt]">สิ่งที่ส่งมาด้วย</Label>
-              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange}
+              <Input 
+                id="attachments" 
+                name="attachments" 
+                value={formData.attachments} 
+                onChange={handleInputChange}
                 className={cn(inputStyle, placeholderStyle)}
                 placeholder="กรอกข้อมูล"
               />
@@ -180,10 +209,10 @@ const ThaiMemoForm = () => {
               rows={4}
               maxLength={600}
               className={cn(
-                "w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm] max-h-[5.5em] resize-none overflow-y-auto print:overflow-hidden",
+                "w-full text-[17pt] leading-[2.5] border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm] max-h-[5.5em] resize-none overflow-y-auto print:overflow-hidden",
                 placeholderStyle
               )}
-              style={{ minHeight: "4em", maxHeight: "5.5em" }}
+              style={{ minHeight: "4em", maxHeight: "5.5em", lineHeight: "2.5" }}
             />
             <Textarea
               name="objective"
@@ -193,10 +222,10 @@ const ThaiMemoForm = () => {
               rows={4}
               maxLength={600}
               className={cn(
-                "w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm] max-h-[5.5em] resize-none overflow-y-auto print:overflow-hidden",
+                "w-full text-[17pt] leading-[2.5] border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm] max-h-[5.5em] resize-none overflow-y-auto print:overflow-hidden",
                 placeholderStyle
               )}
-              style={{ minHeight: "4em", maxHeight: "5.5em" }}
+              style={{ minHeight: "4em", maxHeight: "5.5em", lineHeight: "2.5" }}
             />
             <Textarea
               name="conclusion"
@@ -206,10 +235,10 @@ const ThaiMemoForm = () => {
               rows={4}
               maxLength={600}
               className={cn(
-                "w-full text-[18px] leading-relaxed border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm] max-h-[5.5em] resize-none overflow-y-auto print:overflow-hidden",
+                "w-full text-[17pt] leading-[2.5] border-none focus:ring-0 shadow-none bg-transparent p-0 [text-indent:1cm] max-h-[5.5em] resize-none overflow-y-auto print:overflow-hidden",
                 placeholderStyle
               )}
-              style={{ minHeight: "4em", maxHeight: "5.5em" }}
+              style={{ minHeight: "4em", maxHeight: "5.5em", lineHeight: "2.5" }}
             />
           </div>
 
@@ -217,17 +246,23 @@ const ThaiMemoForm = () => {
             <div className="w-2/5 text-center space-y-2">
               <div className="flex justify-center items-baseline">
                 <span className="text-[17pt]">(</span>
-                <Input name="signerName" value={formData.signerName} onChange={handleInputChange}
+                <Input 
+                  name="signerName" 
+                  value={formData.signerName} 
+                  onChange={handleInputChange}
                   className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent"
                   placeholder="กรอกข้อมูล"
                 />
                 <span className="text-[17pt]">)</span>
               </div>
               <div>
-                 <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange}
-                   className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent"
-                   placeholder="กรอกข้อมูล"
-                 />
+                <Input 
+                  name="signerPosition" 
+                  value={formData.signerPosition} 
+                  onChange={handleInputChange}
+                  className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent"
+                  placeholder="กรอกข้อมูล"
+                />
               </div>
             </div>
           </div>
@@ -253,4 +288,5 @@ const ThaiMemoForm = () => {
     </div>
   );
 };
+
 export default ThaiMemoForm;

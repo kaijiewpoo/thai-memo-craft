@@ -244,15 +244,17 @@ const ThaiMemoForm = () => {
 
           <div className="flex justify-end mt-8">
             <div className="w-2/5 text-center space-y-2">
-              <div className="flex justify-center items-baseline">
-                <span className="text-[17pt]">(</span>
+              <div className="flex justify-center">
                 <Input 
                   name="signerPrefix" 
                   value={formData.signerPrefix} 
                   onChange={handleInputChange}
-                  className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent w-16"
+                  className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent w-20"
                   placeholder="คำนำหน้า"
                 />
+              </div>
+              <div className="flex justify-center items-baseline">
+                <span className="text-[17pt]">(</span>
                 <Input 
                   name="signerName" 
                   value={formData.signerName} 

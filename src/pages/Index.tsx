@@ -167,7 +167,7 @@ const ThaiMemoForm = () => {
                 <span className="text-[17pt]">)</span>
               </div>
               <div>
-                <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent" placeholder="กรอกข้อมูล" />
+                <Input name="signerPosition" value={formData.signerPosition} onChange={handleInputChange} className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent" placeholder="ตำแหน่ง" />
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -124,18 +125,22 @@ const ThaiMemoForm = () => {
 
             <div className="flex items-baseline">
               <Label htmlFor="salutation" className="shrink-0 text-[17pt] font-bold">เรียน</Label>
-              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูล" />
+              <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูl" />
             </div>
 
-            <div className="flex items-baseline">
-              <Label htmlFor="referenceTo" className="shrink-0 text-[17pt]">อ้างถึง</Label>
-              <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูล" />
-            </div>
+            {formData.referenceTo && (
+              <div className="flex items-baseline">
+                <Label htmlFor="referenceTo" className="shrink-0 text-[17pt]">อ้างถึง</Label>
+                <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูล" />
+              </div>
+            )}
 
-            <div className="flex items-baseline">
-              <Label htmlFor="attachments" className="shrink-0 text-[17pt]">สิ่งที่ส่งมาด้วย</Label>
-              <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูล" />
-            </div>
+            {formData.attachments && (
+              <div className="flex items-baseline">
+                <Label htmlFor="attachments" className="shrink-0 text-[17pt]">สิ่งที่ส่งมาด้วย</Label>
+                <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange} className={cn(inputStyle, placeholderStyle)} placeholder="กรอกข้อมูล" />
+              </div>
+            )}
           </div>
           
           <div className="mt-4 space-y-2">
@@ -158,7 +163,7 @@ const ThaiMemoForm = () => {
 
           <div className="flex justify-end mt-8">
             <div className="w-2/5 text-center space-y-2">
-              <div className="flex justify-start -ml-4">
+              <div className="flex justify-start -ml-8">
                 <Input name="signerPrefix" value={formData.signerPrefix} onChange={handleInputChange} placeholder="คำนำหน้า" className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent w-20" />
               </div>
               <div className="flex justify-center items-baseline">

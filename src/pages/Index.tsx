@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -10,10 +11,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
+
 const ThaiMemoForm = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
   const initialData = {
     department: "",
     referenceNumber: "",
@@ -30,10 +30,7 @@ const ThaiMemoForm = () => {
   };
   const [formData, setFormData] = useState(initialData);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -77,25 +74,35 @@ const ThaiMemoForm = () => {
 
   return (
     <div className="min-h-screen bg-gray-200 dark:bg-gray-800 p-8 pt-[1.5cm] flex justify-center items-start font-sarabun relative print:bg-white">
-      {/* A4 PAPER FRAME */}
+      {/* กรอบ A4 เป๊ะ */}
       <div
-        className="relative a4-print-border w-[21cm] min-h-[29.7cm] bg-white dark:bg-gray-900 shadow-2xl pt-[1.5cm] pr-[2cm] pb-[2.5cm] pl-[3cm] text-black dark:text-white print:shadow-none print:pt-[1.5cm] print:pr-[2cm] print:pb-[2.5cm] print:pl-[3cm] print:text-black print:dark:text-black print:mx-0 print:my-0"
+        className="relative a4-print-border"
         style={{
-          boxSizing: "border-box",
-          // ป้องกัน scrollbar หรือ overflow default
-          overflow: "hidden",
-          maxHeight: "297mm",
+          width: "210mm",
+          minWidth: "210mm",
+          maxWidth: "210mm",
+          minHeight: "297mm",
           height: "297mm",
+          maxHeight: "297mm",
+          boxSizing: "border-box",
+          margin: "0 auto",
+          background: "white",
+          position: "relative",
+          overflow: "hidden",
+          padding: 0
         }}
       >
         {/* เอกสารเนื้อหาทั้งหมด */}
-        <header className="relative mb-4">
-          <img src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png" alt="ตราครุฑ" className="absolute -top-[0cm] -left-[0cm] h-[1.5cm] w-auto" />
-          <h1 className="text-[25pt] font-bold text-center pt-[0.5cm]">บันทึกข้อความ</h1>
+        <header className="relative mb-4 pt-[1.5cm] pr-[2cm] pb-0 pl-[3cm]">
+          <img
+            src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png"
+            alt="ตราครุฑ"
+            className="absolute top-[0.2cm] left-[0.2cm] h-[1.5cm] w-auto"
+          />
+          <h1 className="text-[25pt] font-bold text-center">บันทึกข้อความ</h1>
         </header>
 
-        {/* MAIN CONTENT */}
-        <main className="text-[16pt]">
+        <main className="text-[16pt] pt-2 pr-[2cm] pb-[2.5cm] pl-[3cm] print:pb-[2.5cm] print:pt-2 print:pr-[2cm] print:pl-[3cm]">
           <div className="space-y-1">
             <div className="flex items-baseline">
               <Label htmlFor="department" className="shrink-0 text-[17pt] font-bold">ส่วนราชการ</Label>
@@ -104,7 +111,6 @@ const ThaiMemoForm = () => {
                 placeholder="กรอกข้อมูล"
               />
             </div>
-
             <div className="flex items-baseline gap-8">
               <div className="flex items-baseline w-1/2">
                 <Label htmlFor="referenceNumber" className="shrink-0 text-[17pt] font-bold">ที่</Label>
@@ -137,7 +143,6 @@ const ThaiMemoForm = () => {
                 </div>
               </div>
             </div>
-
             <div className="flex items-baseline">
               <Label htmlFor="subject" className="shrink-0 text-[17pt] font-bold">เรื่อง</Label>
               <Input id="subject" name="subject" value={formData.subject} onChange={handleInputChange}
@@ -145,7 +150,6 @@ const ThaiMemoForm = () => {
                 placeholder="กรอกข้อมูล"
               />
             </div>
-
             <div className="flex items-baseline">
               <Label htmlFor="salutation" className="shrink-0 text-[17pt] font-bold">เรียน</Label>
               <Input id="salutation" name="salutation" value={formData.salutation} onChange={handleInputChange}
@@ -153,7 +157,6 @@ const ThaiMemoForm = () => {
                 placeholder="กรอกข้อมูล"
               />
             </div>
-
             <div className="flex items-baseline">
               <Label htmlFor="referenceTo" className="shrink-0 text-[17pt]">อ้างถึง</Label>
               <Input id="referenceTo" name="referenceTo" value={formData.referenceTo} onChange={handleInputChange}
@@ -161,7 +164,6 @@ const ThaiMemoForm = () => {
                 placeholder="กรอกข้อมูล"
               />
             </div>
-
             <div className="flex items-baseline">
               <Label htmlFor="attachments" className="shrink-0 text-[17pt]">สิ่งที่ส่งมาด้วย</Label>
               <Input id="attachments" name="attachments" value={formData.attachments} onChange={handleInputChange}
@@ -232,9 +234,10 @@ const ThaiMemoForm = () => {
             </div>
           </div>
         </main>
-
-        {/* LOGO + APP NAME (VISIBLE ONLY ON PRINT AT BOTTOM LEFT) */}
-        <div className="hidden print:flex items-center gap-2 absolute left-4 bottom-4">
+        {/* LOGO + APP NAME: พิมพ์เฉพาะบนเอกสาร มุมซ้ายล่าง */}
+        <div
+          className="hidden print:flex items-center gap-2 absolute left-4 bottom-4"
+        >
           <img
             src="/lovable-uploads/d64c17a9-6046-4448-8853-8d2e2b3cd47c.png"
             alt="Lovable Logo"
@@ -244,8 +247,7 @@ const ThaiMemoForm = () => {
           <span className="text-[13pt] font-bold text-zinc-700 print:text-black">สร้างด้วย Lovable</span>
         </div>
       </div>
-
-      {/* ปุ่มเมนู UI (ไม่แสดงตอนพิมพ์) */}
+      {/* ปุ่ม/ฟังก์ชันส่วน UI: ซ่อนเวลาพิมพ์ */}
       <div className="fixed bottom-4 right-4 flex flex-col gap-3 print:hidden">
         <Button onClick={handleClearForm} variant="destructive">ล้างข้อมูล</Button>
         <Button onClick={handlePrint} className="bg-zinc-600 hover:bg-zinc-700">พิมพ์</Button>

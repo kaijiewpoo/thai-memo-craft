@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
+
 const ThaiMemoForm = () => {
   const {
     toast
@@ -157,12 +158,12 @@ const ThaiMemoForm = () => {
 
           <div className="flex justify-end mt-8">
             <div className="w-2/5 text-center space-y-2">
-              <div className="flex justify-start">
+              <div className="flex justify-start -ml-4">
                 <Input name="signerPrefix" value={formData.signerPrefix} onChange={handleInputChange} placeholder="คำนำหน้า" className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent w-20" />
               </div>
               <div className="flex justify-center items-baseline">
                 <span className="text-[17pt]">(</span>
-                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent" placeholder="กรอกข้อมูล" />
+                <Input name="signerName" value={formData.signerName} onChange={handleInputChange} className="text-center text-[23px] border-none shadow-none focus:ring-0 p-0 bg-transparent focus:bg-transparent" placeholder="ชื่อ - สกุล" />
                 <span className="text-[17pt]">)</span>
               </div>
               <div>
@@ -183,4 +184,5 @@ const ThaiMemoForm = () => {
       </div>
     </div>;
 };
+
 export default ThaiMemoForm;
